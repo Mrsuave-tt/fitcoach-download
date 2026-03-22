@@ -5,64 +5,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download FitCoach AI</title>
+    <!-- Modern Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Outfit', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
             background: url('Apex.png') no-repeat center center fixed;
             background-size: cover;
-            color: white;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Subtle overlay to make text readable */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .card {
-            background: #1e1e1e;
-            padding: 3rem;
-            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+            background: rgba(20, 20, 25, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 3.5rem 3rem;
+            border-radius: 24px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 1px solid #333;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 450px;
+            width: 90%;
+            animation: floatUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes floatUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
-            margin-top: 0;
-            font-size: 2.5rem;
-            color: #4CAF50;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(120, 255, 214, 0.2);
+            letter-spacing: -1px;
+        }
+        
+        .emoji {
+            -webkit-text-fill-color: initial;
+            display: inline-block;
         }
 
         p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #ccc;
+            font-size: 1.15rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
         }
 
         .btn {
-            background: #4CAF50;
-            color: white;
-            padding: 15px 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: #064e3b;
+            padding: 16px 42px;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: background 0.3s;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+            transition: all 0.6s ease;
         }
 
         .btn:hover {
-            background: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 35px rgba(34, 197, 94, 0.5);
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #ffffff;
+        }
+
+        .btn:hover::before {
+            left: 200%;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .download-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
     </style>
 </head>
 
 <body>
     <div class="card">
-        <h1>FitCoach AI 🏋️‍♂️</h1>
-        <p>Your Personal AI Fitness Trainer</p>
+        <h1>FitCoach AI <span class="emoji">🏋️‍♂️</span></h1>
+        <p>Your Personal AI Fitness Trainer, designed to push you further.</p>
 
-        <a href="fitcoach.apk" download class="btn">Download App (.apk)</a>
+        <a href="fitcoach.apk" download class="btn">
+            <svg class="download-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 16L7 11L8.4 9.55L11 12.15V4H13V12.15L15.6 9.55L17 11L12 16ZM6 20C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V15H6V18H18V15H20V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20H6Z"/>
+            </svg>
+            Download APK
+        </a>
     </div>
 </body>
 
